@@ -20,31 +20,31 @@ class Psr3WriterAdapterTest extends TestCase
 
     public static function provideLogLevel()
     {
-        return array(
-            array(ZendLogger::EMERG, LogLevel::EMERGENCY),
-            array(ZendLogger::ALERT, LogLevel::ALERT),
-            array(ZendLogger::CRIT, LogLevel::CRITICAL),
-            array(ZendLogger::ERR, LogLevel::CRITICAL),
-            array(ZendLogger::WARN, LogLevel::WARNING),
-            array(ZendLogger::NOTICE, LogLEvel::NOTICE),
-            array(ZendLogger::INFO, LogLevel::INFO),
-            array(ZendLogger::DEBUG, LogLevel::DEBUG),
-        );
+        return [
+            [ZendLogger::EMERG, LogLevel::EMERGENCY],
+            [ZendLogger::ALERT, LogLevel::ALERT],
+            [ZendLogger::CRIT, LogLevel::CRITICAL],
+            [ZendLogger::ERR, LogLevel::CRITICAL],
+            [ZendLogger::WARN, LogLevel::WARNING],
+            [ZendLogger::NOTICE, LogLEvel::NOTICE],
+            [ZendLogger::INFO, LogLevel::INFO],
+            [ZendLogger::DEBUG, LogLevel::DEBUG],
+        ];
     }
 
     /** @dataProvider provideLogLevel */
     public function testLog($zendLogLevel, $psrLogLevel)
     {
         $logger = ZendLogger::factory(
-            array(
-                array(
+            [
+                [
                     'writerName'      => 'Psr3WriterAdapter',
                     'writerNamespace' => 'InterNations\\Component\\Logging\\Psr3\\',
-                    'writerParams'    => array(
-                        'logger' => new Monolog('test', array($this->testHandler))
-                    )
-                )
-            )
+                    'writerParams'    => [
+                        'logger' => new Monolog('test', [$this->testHandler])
+                    ]
+                ]
+            ]
         );
 
         $logger->log('test', $zendLogLevel);
@@ -59,16 +59,16 @@ class Psr3WriterAdapterTest extends TestCase
     public function testLogIncludeContext($zendLogLevel, $psrLogLevel)
     {
         $logger = ZendLogger::factory(
-            array(
-                array(
+            [
+                [
                     'writerName'      => 'Psr3WriterAdapter',
                     'writerNamespace' => 'InterNations\\Component\\Logging\\Psr3\\',
-                    'writerParams'    => array(
-                        'logger'                => new Monolog('test', array($this->testHandler)),
+                    'writerParams'    => [
+                        'logger'                => new Monolog('test', [$this->testHandler]),
                         'includeEventAsContext' => true,
-                    )
-                )
-            )
+                   ]
+                ]
+            ]
         );
 
         $logger->log('test', $zendLogLevel);
@@ -87,16 +87,16 @@ class Psr3WriterAdapterTest extends TestCase
     public function testCustomPriorityWithDefaultFallback()
     {
         $logger = ZendLogger::factory(
-            array(
-                array(
+            [
+                [
                     'writerName'      => 'Psr3WriterAdapter',
                     'writerNamespace' => 'InterNations\\Component\\Logging\\Psr3\\',
-                    'writerParams'    => array(
-                        'logger'                => new Monolog('test', array($this->testHandler)),
+                    'writerParams'    => [
+                        'logger'                => new Monolog('test', [$this->testHandler]),
                         'includeEventAsContext' => true,
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         $logger->addPriority('trace', 8);
 
@@ -118,17 +118,17 @@ class Psr3WriterAdapterTest extends TestCase
     public function testCustomPriorityWithCustomFallback()
     {
         $logger = ZendLogger::factory(
-            array(
-                array(
+            [
+                [
                     'writerName'      => 'Psr3WriterAdapter',
                     'writerNamespace' => 'InterNations\\Component\\Logging\\Psr3\\',
-                    'writerParams'    => array(
-                        'logger'                => new Monolog('test', array($this->testHandler)),
+                    'writerParams'    => [
+                        'logger'                => new Monolog('test', [$this->testHandler]),
                         'includeEventAsContext' => true,
                         'fallbackLogLevel'      => LogLevel::ALERT,
-                    )
-                )
-            )
+                    ]
+                ]
+            ]
         );
         $logger->addPriority('trace', 8);
 
@@ -150,16 +150,16 @@ class Psr3WriterAdapterTest extends TestCase
     public function testCustomLevelTranslationTable()
     {
         $logger = ZendLogger::factory(
-            array(
-                array(
+            [
+                [
                     'writerName'      => 'Psr3WriterAdapter',
                     'writerNamespace' => 'InterNations\\Component\\Logging\\Psr3\\',
-                    'writerParams'    => array(
-                        'logger'           => new Monolog('test', array($this->testHandler)),
-                        'translationTable' => array(ZendLogger::DEBUG => LogLevel::EMERGENCY)
-                    )
-                )
-            )
+                    'writerParams'    => [
+                        'logger'           => new Monolog('test', [$this->testHandler]),
+                        'translationTable' => [ZendLogger::DEBUG => LogLevel::EMERGENCY]
+                    ]
+                ]
+            ]
         );
 
         $logger->log('test', ZendLogger::DEBUG);
@@ -174,13 +174,13 @@ class Psr3WriterAdapterTest extends TestCase
     {
         $this->setExpectedException('InvalidArgumentException', 'Logger needs to implement Psr\Log\LoggerInterface');
         ZendLogger::factory(
-            array(
-                array(
+            [
+                [
                     'writerName'      => 'Psr3WriterAdapter',
                     'writerNamespace' => 'InterNations\\Component\\Logging\\Psr3\\',
-                    'writerParams'    => array()
-                )
-            )
+                    'writerParams'    =>  [],
+                ]
+            ]
         );
     }
 
@@ -188,13 +188,13 @@ class Psr3WriterAdapterTest extends TestCase
     {
         $this->setExpectedException('InvalidArgumentException', 'Logger needs to implement Psr\Log\LoggerInterface');
         ZendLogger::factory(
-            array(
-                array(
+            [
+                [
                     'writerName'      => 'Psr3WriterAdapter',
                     'writerNamespace' => 'InterNations\\Component\\Logging\\Psr3\\',
-                    'writerParams'    => array('logger' => new stdClass())
-                )
-            )
+                    'writerParams'    => ['logger' => new stdClass()],
+                ]
+            ]
         );
     }
 }

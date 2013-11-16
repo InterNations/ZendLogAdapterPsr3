@@ -14,7 +14,7 @@ class Psr3WriterAdapter extends AbstractZendLogWriter
      *
      * @var array
      */
-    private $translationTable = array(
+    private $translationTable = [
         ZendLog::EMERG  => LogLevel::EMERGENCY,
         ZendLog::ALERT  => LogLevel::ALERT,
         ZendLog::CRIT   => LogLevel::CRITICAL,
@@ -23,7 +23,7 @@ class Psr3WriterAdapter extends AbstractZendLogWriter
         ZendLog::NOTICE => LogLEvel::NOTICE,
         ZendLog::INFO   => LogLevel::INFO,
         ZendLog::DEBUG  => LogLevel::DEBUG,
-    );
+    ];
 
     /** @var LoggerInterface */
     private $logger;
@@ -44,7 +44,7 @@ class Psr3WriterAdapter extends AbstractZendLogWriter
 
     public function __construct(
         LoggerInterface $logger,
-        array $translationTable = array(),
+        array $translationTable = [],
         $includeEventAsContext = false,
         $fallbackLogLevel = null
     )
@@ -60,7 +60,7 @@ class Psr3WriterAdapter extends AbstractZendLogWriter
         $level = $this->translatePriority($event);
 
         $message = $event['message'];
-        $context = array();
+        $context = [];
 
         if ($this->includeEventAsContext) {
             unset($event['message']);
@@ -82,11 +82,11 @@ class Psr3WriterAdapter extends AbstractZendLogWriter
     public static function factory($config)
     {
         $config = array_replace_recursive(
-            array(
+            [
                 'includeEventAsContext' => false,
                 'fallbackLogLevel'      => null,
-                'translationTable'      => array(),
-            ),
+                'translationTable'      => [],
+            ],
             $config
         );
 
