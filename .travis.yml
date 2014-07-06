@@ -12,3 +12,7 @@ before_script:
 script:
   - ./vendor/bin/phpcs --standard=vendor/internations/kodierungsregelwerksammlung/ruleset.xml ./src/ || true
   - phpunit
+
+cache:
+  directories:
+    - vendor/
