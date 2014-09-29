@@ -18,7 +18,7 @@ class Psr3WriterAdapter extends AbstractZendLogWriter
         ZendLog::EMERG  => LogLevel::EMERGENCY,
         ZendLog::ALERT  => LogLevel::ALERT,
         ZendLog::CRIT   => LogLevel::CRITICAL,
-        ZendLog::ERR    => LogLevel::CRITICAL,
+        ZendLog::ERR    => LogLevel::ERROR,
         ZendLog::WARN   => LogLevel::WARNING,
         ZendLog::NOTICE => LogLEvel::NOTICE,
         ZendLog::INFO   => LogLevel::INFO,

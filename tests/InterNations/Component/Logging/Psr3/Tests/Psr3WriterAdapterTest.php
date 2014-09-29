@@ -24,7 +24,7 @@ class Psr3WriterAdapterTest extends TestCase
             [ZendLogger::EMERG, LogLevel::EMERGENCY],
             [ZendLogger::ALERT, LogLevel::ALERT],
             [ZendLogger::CRIT, LogLevel::CRITICAL],
-            [ZendLogger::ERR, LogLevel::CRITICAL],
+            [ZendLogger::ERR, LogLevel::ERROR],
             [ZendLogger::WARN, LogLevel::WARNING],
             [ZendLogger::NOTICE, LogLEvel::NOTICE],
             [ZendLogger::INFO, LogLevel::INFO],
