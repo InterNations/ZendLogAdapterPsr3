@@ -1,3 +1,4 @@
-# ZF1 PSR-3 Log Adapter [![Build Status](https://travis-ci.org/InterNations/ZendLogAdapterPsr3.svg)](https://travis-ci.org/InterNations/ZendLogAdapterPsr3) [![Dependency Status](https://www.versioneye.com/user/projects/53479cd5fe0d0710500001f9/badge.png)](https://www.versioneye.com/user/projects/53479cd5fe0d0710500001f9)
+# ZF1 PSR-3 Log Adapter
+[![Build Status](https://travis-ci.org/InterNations/ZendLogAdapterPsr3.svg)](https://travis-ci.org/InterNations/ZendLogAdapterPsr3) [![Dependency Status](https://www.versioneye.com/user/projects/53479cd5fe0d0710500001f9/badge.png)](https://www.versioneye.com/user/projects/53479cd5fe0d0710500001f9) [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/InterNations/ZendLogAdapterPsr3.svg)](http://isitmaintained.com/project/InterNations/ZendLogAdapterPsr3 "Average time to resolve an issue") [![Percentage of issues still open](http://isitmaintained.com/badge/open/InterNations/ZendLogAdapterPsr3.svg)](http://isitmaintained.com/project/InterNations/ZendLogAdapterPsr3 "Percentage of issues still open")
 
 An adapter to use any PSR-3 compatible logger in Zend Framework 1.x applications.
