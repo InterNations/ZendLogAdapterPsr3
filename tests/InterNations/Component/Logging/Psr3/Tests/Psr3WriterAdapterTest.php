@@ -5,7 +5,7 @@ use Monolog\Handler\TestHandler as MonologTestHandler;
 use Monolog\Logger as Monolog;
 use Psr\Log\LogLevel;
 use Zend_Log as ZendLogger;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
 class Psr3WriterAdapterTest extends TestCase
@@ -172,7 +172,8 @@ class Psr3WriterAdapterTest extends TestCase
 
     public function testErrorNoLoggerPassed()
     {
-        $this->setExpectedException('InvalidArgumentException', 'Logger needs to implement Psr\Log\LoggerInterface');
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Logger needs to implement Psr\Log\LoggerInterface');
         ZendLogger::factory(
             [
                 [
@@ -186,7 +187,8 @@ class Psr3WriterAdapterTest extends TestCase
 
     public function testErrorInvalidLoggerPassed()
     {
-        $this->setExpectedException('InvalidArgumentException', 'Logger needs to implement Psr\Log\LoggerInterface');
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Logger needs to implement Psr\Log\LoggerInterface');
         ZendLogger::factory(
             [
                 [
