@@ -42,11 +42,12 @@ class Psr3WriterAdapter extends AbstractZendLogWriter
      */
     private $includeEventAsContext = false;
 
+    /** @param string[] $translationTable */
     public function __construct(
         LoggerInterface $logger,
         array $translationTable = [],
-        $includeEventAsContext = false,
-        $fallbackLogLevel = null
+        bool $includeEventAsContext = false,
+        ?bool $fallbackLogLevel = null
     )
     {
         $this->logger = $logger;
@@ -55,7 +56,7 @@ class Psr3WriterAdapter extends AbstractZendLogWriter
         $this->fallbackLogLevel = $fallbackLogLevel !== null ? $fallbackLogLevel : $this->fallbackLogLevel;
     }
 
-    protected function _write($event)
+    protected function _write($event): void // @codingStandardsIgnoreLine
     {
         $level = $this->translatePriority($event);
 
@@ -70,7 +71,8 @@ class Psr3WriterAdapter extends AbstractZendLogWriter
         $this->logger->log($level, $message, $context);
     }
 
-    private function translatePriority(array $event)
+    /** @param mixed[] $event */
+    private function translatePriority(array $event): string
     {
         if (!isset($this->translationTable[$event['priority']])) {
             return $this->fallbackLogLevel;
@@ -79,13 +81,14 @@ class Psr3WriterAdapter extends AbstractZendLogWriter
         return $this->translationTable[$event['priority']];
     }
 
-    public static function factory($config)
+    /** @param mixed $config */
+    public static function factory($config): self
     {
         $config = array_replace_recursive(
             [
                 'includeEventAsContext' => false,
-                'fallbackLogLevel'      => null,
-                'translationTable'      => [],
+                'fallbackLogLevel' => null,
+                'translationTable' => [],
             ],
             $config
         );
