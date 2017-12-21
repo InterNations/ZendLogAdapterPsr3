@@ -123,9 +123,9 @@ class Psr3WriterAdapterTest extends TestCase
                     'writerName'      => 'Psr3WriterAdapter',
                     'writerNamespace' => 'InterNations\\Component\\Logging\\Psr3\\',
                     'writerParams'    => [
-                        'logger'                => new Monolog('test', [$this->testHandler]),
+                        'logger' => new Monolog('test', [$this->testHandler]),
                         'includeEventAsContext' => true,
-                        'fallbackLogLevel'      => LogLevel::ALERT,
+                        'fallbackLogLevel' => LogLevel::ALERT,
                     ]
                 ]
             ]

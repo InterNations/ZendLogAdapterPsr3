@@ -47,7 +47,7 @@ class Psr3WriterAdapter extends AbstractZendLogWriter
         LoggerInterface $logger,
         array $translationTable = [],
         bool $includeEventAsContext = false,
-        ?bool $fallbackLogLevel = null
+        ?string $fallbackLogLevel = null
     )
     {
         $this->logger = $logger;
