@@ -2,7 +2,7 @@
     "name": "internations/zend-log-adapter-psr3",
     "description": "PSR-3 adapter for Zend_Log (Zend Framework 1.x)",
     "require": {
-        "php": "~7",
+        "php": "~7.1",
         "zendframework/zendframework1": "~1",
         "psr/log": "*"
     },
