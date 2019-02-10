@@ -13,7 +13,7 @@ class Psr3WriterAdapterTest extends TestCase
     /** @var MonologTestHandler */
     private $testHandler;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->testHandler = new MonologTestHandler();
     }

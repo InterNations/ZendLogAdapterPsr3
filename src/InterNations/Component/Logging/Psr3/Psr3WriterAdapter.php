@@ -38,7 +38,7 @@ class Psr3WriterAdapter extends AbstractZendLogWriter
     /**
      * Should the remaining
      *
-     * @var boolean
+     * @var bool
      */
     private $includeEventAsContext = false;
 
